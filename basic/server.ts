@@ -24,16 +24,17 @@ connection.connect((err) => {
 });
 
 app.post("/api/create-databse", (req, res) => {
-  const query = `INSERT INTO movies (movie_id, title, year) VALUES ('4', 'The Matrix Resurrections', '2021')`;
+  const query = `INSERT INTO movies (movie_id, title, year) VALUES ('7', 'Star Wars', '1977')`;
   
 
   connection.query(query, (err, results, fields) => {
     try {
+      res.send({ ok: true });
       if (err) throw err;
 
       console.log(results);
       console.log(fields);
-      res.send({ ok: true });
+      
     } catch (error) {
       console.error(error);
       res.send({ ok: false, error: error.message });
