@@ -6,6 +6,7 @@ const port: number = 3000;
 
 app.use(express.static("./client/build"));
 app.use(express.json());
+
 const connection = mysql.createConnection({
   host: "localhost",
   port: "3306",
@@ -24,6 +25,8 @@ connection.connect((err) => {
   }
 });
 
+import usersRoute from './API/users/usersRoute';
+app.use('/api/users', usersRoute);
 
 
 
