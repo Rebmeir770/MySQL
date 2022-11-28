@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState, AppThunk } from '../../app/store';
+import { registerAsync } from './userApi';
 
 export enum Status{
     IDLE = 'idle' ,
@@ -20,30 +21,23 @@ const initialState: UserState = {
   status: Status.IDLE,
 };
 
-// The function below is called a thunk and allows us to perform async logic. It
-// can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
-// will call the thunk with the `dispatch` function as the first argument. Async
-// code can then be executed and other actions can be dispatched. Thunks are
-// typically used to make async requests.
-
-
 export const userSlice = createSlice({
   name: 'user',
   initialState,
-  // The `reducers` field lets us define reducers and generate associated actions
   reducers: {},
   extraReducers: (builder) => {
-//     builder
-//       .addCase(incrementAsync.pending, (state) => {
-//         state.status = 'loading';
-//       })
-//       .addCase(incrementAsync.fulfilled, (state, action) => {
-//         state.status = 'idle';
-//         state.value += action.payload;
-//       })
-//       .addCase(incrementAsync.rejected, (state) => {
-//         state.status = 'failed';
-//       });
+    builder
+      .addCase(registerAsync.pending, (state) => {
+        state.status = Status.LOADING;
+      })
+      .addCase(registerAsync.fulfilled, (state, action) => {
+        
+        state.status = Status.IDLE;
+        state.user= action.payload;
+      })
+      .addCase(registerAsync.rejected, (state) => {
+        state.status = Status.FAILED;
+      });
    },
 });
 
