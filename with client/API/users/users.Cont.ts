@@ -1,4 +1,4 @@
-
+import { connection } from "../../server";
 import { UserJoi } from "./usersModel";
 
 export  function  register(req, res){
