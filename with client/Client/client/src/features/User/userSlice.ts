@@ -30,10 +30,10 @@ export const userSlice = createSlice({
       .addCase(registerAsync.pending, (state) => {
         state.status = Status.LOADING;
       })
-      .addCase(registerAsync.fulfilled, (state, action) => {
-        
+      .addCase(registerAsync.fulfilled, (state, action:PayloadAction<any>) => {
         state.status = Status.IDLE;
-        state.user= action.payload;
+        const {user} = action.payload;
+        state.user = user;
       })
       .addCase(registerAsync.rejected, (state) => {
         state.status = Status.FAILED;

@@ -7,12 +7,12 @@ const port: number = 3000;
 app.use(express.static("./client/build"));
 app.use(express.json());
 
-const connection = mysql.createConnection({
+export const connection = mysql.createConnection({
   host: "localhost",
   port: "3306",
   user: "root",
   password: "meirMeiital080821",
-  database: "movie",
+  database: "register",
 });
 
 connection.connect((err) => {
