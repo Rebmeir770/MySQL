@@ -1,16 +1,22 @@
 import React from 'react'
+import { useAppDispatch } from '../../app/hooks';
+import { registerAsync } from '../User/userApi';
 
 const Register = () => {
-  
+
+  const dispatch = useAppDispatch();
+
   function handleRegister(ev:any){
     ev.preventDefault();
     console.log('register')
-    let {email, password, name} = ev.targe.elements;
+    let {email, password, name} = ev.target.elements;
     email = email.value;
     password = password.value;
     name = name.value;
 
-    console.log(email, password, name)
+    console.log(email, password, name);
+
+    dispatch(registerAsync({email, password, name}))
   }
   return (
     <div>

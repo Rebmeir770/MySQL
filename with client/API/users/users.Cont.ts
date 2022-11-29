@@ -8,14 +8,19 @@ export  function  register(req, res){
        const {error} = UserJoi.validate({email, password, name});
        if (error) throw error;
 
-       const query = `INSERT INTO users VALUES ('${email}','${name}','${password}')`;
-        connection.query(query, (err, res) =>{
-           if(err) throw err;
-           res.send({ok:true, result:res});
+       const query = `INSERT INTO users (email, password, name) VALUES ('${email}','${name}','${password}')`;
+        connection.query(query, (err) =>{
+            try {
+                if(err) throw err;
+                res.send({ok:true, user: {email, name}}); 
+            } catch (error) {
+                console.error(error);
+       res.status(500).send({error:error.messege})
+            }
+           
         });
 
-       res.send({ok:true})
-   } catch (error) {
+    } catch (error) {
        console.error(error);
        res.status(500).send({error:error.messege})
    }
