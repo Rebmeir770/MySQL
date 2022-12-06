@@ -15,18 +15,21 @@ export const registerAsync = createAsyncThunk(
     async ({email, password, name }:userRegister) =>{
         const response = await axios.post('/api/users/register',{email, password, name});
         // The value we return becomes the 'fulfiled' action payload
+        console.log(response.data);
         return response.data;
     }
 );
 
-// interface userLogin{
-//     password:string,
-//     name:string,
-// }
+interface userLogin{
+    password:string,
+    username:string,
+}
 
-// export const loginAsync = createAsyncThunk (
-//     'user/login',
-//     const response = await axios.post('/api/users/login',{password,name}); 
-//         // The value we return becomes the 'fulfiled' action payload
-//         return response.data;
-// );
+export const loginAsync = createAsyncThunk (
+    'user/login',
+    async ({username, password}:userLogin) => {
+        const response = await axios.get(`/api/users/login?username=${username}&password=${password}`);
+        console.log(response.data);
+        return response.data;
+    }
+);

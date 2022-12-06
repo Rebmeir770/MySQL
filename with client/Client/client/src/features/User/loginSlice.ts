@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState, AppThunk } from '../../app/store';
-import { registerAsync } from './userApi';
+import { loginAsync } from './userApi';
 
 
 export enum Status{
@@ -11,8 +11,8 @@ export enum Status{
 
 export interface UserState {
     user:{
-       email:string,
-       name: string,
+    
+       username: string,
       
     } | null;
     status:Status
@@ -23,24 +23,24 @@ const initialState: UserState = {
   status: Status.IDLE,
 };
 
-export const userSlice = createSlice({
-  name: 'user',
+export const loginSlice = createSlice({
+  name: 'login',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(registerAsync.pending, (state) => {
+      .addCase(loginAsync.pending, (state) => {
         state.status = Status.LOADING;
       })
-      .addCase(registerAsync.fulfilled, (state, action:PayloadAction<any>) => {
+      .addCase(loginAsync.fulfilled, (state, action:PayloadAction<any>) => {
         state.status = Status.IDLE;
         const {user} = action.payload;
         state.user = user;
       })
-      .addCase(registerAsync.rejected, (state) => {
+      .addCase(loginAsync.rejected, (state) => {
         state.status = Status.FAILED;
       });
-      
+
    },
 });
 
@@ -52,4 +52,4 @@ export const selectUserStatus = (state: RootState) => state.user.status;
 
 
 
-export default userSlice.reducer;
+export default loginSlice.reducer;

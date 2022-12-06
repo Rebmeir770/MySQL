@@ -1,6 +1,7 @@
 import React from 'react'
 import { useAppDispatch } from '../../app/hooks';
 import { registerAsync } from '../User/userApi';
+import '../styles/register.scss'
 
 const Register = () => {
 
@@ -19,7 +20,7 @@ const Register = () => {
     dispatch(registerAsync({email, password, name}))
   }
   return (
-    <div>
+    <div className='auth'>
       <h1>Register</h1>
        <form onSubmit={handleRegister}>
         <input  type="email" name="email" required placeholder='email'/>

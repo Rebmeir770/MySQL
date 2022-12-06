@@ -1,9 +1,6 @@
 $lightGreen : #b9e7e7;
 
-.container{
-        
-
-    .auth{
+.auth{
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -37,7 +34,12 @@ $lightGreen : #b9e7e7;
                     background-color: teal;
                     cursor: pointer;
                     color: white;
+
+                    span{
+                        font-size: 12px;
+                        text-align: center;
+                        
+                    }
                 }
             }
-    } 
-}
+} 

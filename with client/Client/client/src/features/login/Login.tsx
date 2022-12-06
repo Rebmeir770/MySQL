@@ -1,10 +1,14 @@
 import React from 'react'
-import "./login.scss";
+import '../styles/login.scss'
 import { Link } from 'react-router-dom'
+import { loginAsync } from '../User/userApi';
+import { useAppDispatch } from '../../app/hooks';
+
 
 
 const Login = () => {
   
+  const dispatch = useAppDispatch();
 
   function handleLogin(ev:any) {
     ev.preventDefault();
@@ -12,14 +16,17 @@ const Login = () => {
     let {username, password } = ev.target.elements;
     username = username.value;
     password = password.value;
+
     console.log(username, password)
+
+    dispatch(loginAsync({username, password}))
 
 
   }
 
 
   return (
-    <div className='conteiner'>
+    
      <div className='auth'>
         <h1>Login</h1>
         <form onSubmit={handleLogin} >
@@ -27,9 +34,11 @@ const Login = () => {
           <input required type="password" placeholder='password'  name="password" />
           <button>Longin</button>
         </form>
-        <Link className="Register" to="/Register"><button>Don't have account? click to Register</button></Link>
+        <span>
+          Don't you have an account? <Link to="/register">Register</Link>
+        </span>
       </div>
-    </div>
+    
   )
 }
 
