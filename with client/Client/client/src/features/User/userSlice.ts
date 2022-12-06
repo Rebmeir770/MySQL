@@ -38,6 +38,7 @@ export const userSlice = createSlice({
       .addCase(registerAsync.rejected, (state) => {
         state.status = Status.FAILED;
       });
+
    },
 });
 

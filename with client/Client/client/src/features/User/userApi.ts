@@ -18,3 +18,15 @@ export const registerAsync = createAsyncThunk(
         return response.data;
     }
 );
+
+// interface userLogin{
+//     password:string,
+//     name:string,
+// }
+
+// export const loginAsync = createAsyncThunk (
+//     'user/login',
+//     const response = await axios.post('/api/users/login',{password,name}); 
+//         // The value we return becomes the 'fulfiled' action payload
+//         return response.data;
+// );

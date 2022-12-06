@@ -1,8 +1,12 @@
 import React from 'react'
 
-const home = () => {
+export const home = () => {
   return (
-    <div>home</div>
+    <div>
+        
+        <h1>Home</h1>
+
+    </div>
   )
 }
 

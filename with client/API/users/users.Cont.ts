@@ -26,3 +26,29 @@ export  function  register(req, res){
    }
 
 }
+
+export  function  login(req, res){
+    try {
+        const {email, password, name} = req.body;
+ 
+        const {error} = UserJoi.validate({password, name});
+        if (error) throw error;
+ 
+        const query = `INSERT INTO users (password, name) VALUES ('${name}','${password}')`;
+         connection.query(query, (err) =>{
+             try {
+                 if(err) throw err;
+                 res.send({ok:true, user: {name}}); 
+             } catch (error) {
+                 console.error(error);
+        res.status(500).send({error:error.messege})
+             }
+            
+         });
+ 
+     } catch (error) {
+        console.error(error);
+        res.status(500).send({error:error.messege})
+    }
+ 
+ }
