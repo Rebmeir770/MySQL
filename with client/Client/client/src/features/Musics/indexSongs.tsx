@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import SongsCard from './songsCard';
-import { GetSongs, Music } from './getSongs';
+import SongsCard from './SongsCard';
+import { GetSongs, Music } from './GetSongs';
 // import './breeds.scss';
 
-const indexSongs = () => {
+const IndexSongs = () => {
    //set state songs
    const[songs, setSongs] = useState<Music[]>([]);
 
@@ -19,9 +19,9 @@ const indexSongs = () => {
   return (
       <div>
         <h1>Songs</h1>
-        {songs.map((song, i) => <songsCard song={song}/>)}
+        {songs.map((song, i) => <SongsCard song={song}/>)}
       </div>
   );  
 };
 
-export default indexSongs;
+export default IndexSongs;

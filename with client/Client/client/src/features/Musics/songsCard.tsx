@@ -1,5 +1,5 @@
 import { FC } from "react"
-import { Music } from "./getSongs"
+import { Music } from './GetSongs'
 import { Link } from "react-router-dom";
 
 interface SongCardProps{

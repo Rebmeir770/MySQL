@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom"
-import { seachAlbum, Music } from "../Musics/getSongs"
+import { seachAlbum, Music } from "../Musics/GetSongs"
 
 
-const indexMusic = () => {
+const IndexMusic = () => {
   const {song} = useParams();
   const[soundMusic, setSoundMusic] = useState<Music>({song: "", src: "" });
 
@@ -21,4 +21,4 @@ const indexMusic = () => {
   ); 
 };
 
-export default indexMusic;
+export default IndexMusic;
