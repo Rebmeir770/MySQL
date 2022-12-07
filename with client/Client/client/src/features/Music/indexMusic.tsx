@@ -1,44 +1,24 @@
-import axios from "axios";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom"
+import { seachAlbum, Music } from "../Musics/getSongs"
 
 
-export interface Image {
-  song: string;
-  src:string
-}
+const indexMusic = () => {
+  const {song} = useParams();
+  const[soundMusic, setSoundMusic] = useState<Music>({song: "", src: "" });
 
-export async function getSongs(): Promise<Image[]> {
-  try {
-    const {data} = await axios.get('https://theaudiodb.p.rapidapi.com/searchalbum.php');
-        
-    const {message} = data;
-    console.log(message);
-
-    const songs = Object.keys(message);  // array of songs
-        
-    const images = await Promise.all(songs.map(song=>seachAlbum(song)));
-    console.log(images);
-        
-    return images;
-  } catch (error) {
-    console.error(error)
-    return [];
-  }
-} 
-
-
-export async function seachAlbum(song: string):Promise<Image> {
-    try {
-      const { data } = await axios.get(
-        `https://theaudiodb.p.rapidapi.com/${seachAlbum}searchalbum.php` 
-        
+  useEffect(() => {
+    if(song)
+      seachAlbum(song).then((soundMusic) =>
+        setSoundMusic(soundMusic)
       );
-      if(!data) throw new Error (`No data on image of song ${seachAlbum}`);
-      const { message } = data;
-      if(!message) throw new Error (`No data on image of song ${seachAlbum} - 2`);
-      return {song, src:message};
-    } catch (error) {
-        console.error(error)
-        return {song, src:''};
-    }
-}
-    
+  }, [song]);
+  return (
+    <div> 
+      <h1>Song: {song}</h1>
+      <img src={soundMusic.src} alt={soundMusic.song} />
+  </div>
+  ); 
+};
+
+export default indexMusic;

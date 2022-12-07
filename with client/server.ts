@@ -19,7 +19,7 @@ connection.connect((err) => {
   try {
       if (err) throw err;
 
-      console.info("🔥 MySQL is connected 🛢 ");
+      console.info("🔥 MySQL is connected 🛢 🔥");
   } catch (error) {
       console.error(error);
   }

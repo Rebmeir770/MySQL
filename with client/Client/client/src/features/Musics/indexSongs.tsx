@@ -1,9 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import SongsCard from './songsCard';
+import { GetSongs, Music } from './getSongs';
+// import './breeds.scss';
 
 const indexSongs = () => {
-  return (
-    <div>indexSongs</div>
-  )
-}
+   //set state songs
+   const[songs, setSongs] = useState<Music[]>([]);
 
-export default indexSongs
+  useEffect (() => {
+    GetSongs().then((msc: Music[]) => {
+        if (msc.length > 0) {
+           console.log(msc);
+           setSongs(msc);
+        }
+    }); 
+  }, []);
+
+  return (
+      <div>
+        <h1>Songs</h1>
+        {songs.map((song, i) => <songsCard song={song}/>)}
+      </div>
+  );  
+};
+
+export default indexSongs;
