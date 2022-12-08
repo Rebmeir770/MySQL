@@ -1,29 +1,47 @@
+// import {
+//     toJewishDate, toGregorianDate, formatJewishDateInHebrew, toHebrewJewishDate, JewishMonth, formatJewishDate 
+// } from "jewish-date";
+// import React from 'react'
+
+
+import "./styles.css";
 import {
-    toJewishDate, toGregorianDate, formatJewishDateInHebrew, toHebrewJewishDate, JewishMonth, formatJewishDate 
+  toJewishDate,
+  toGregorianDate,
+  formatJewishDateInHebrew,
+  formatJewishDate,
+  toHebrewJewishDate,
+  JewishMonth
 } from "jewish-date";
-import React from 'react'
 
+export  function JewishDate() {
+  const date = new Date();
+  const jewishDate = toJewishDate(date);
+  console.log(jewishDate); // { year: 5780, monthName: "Tevet", month: 4, day: 4 }
 
-export const JewishDate = (year:number, day:string, monthName:string, month:string) => {
+  const jewishDateInEnglish = formatJewishDate(jewishDate);
+  console.log(jewishDateInEnglish); // 4 Tevet 5780
+
+  const jewishDateInHebrew = toHebrewJewishDate(jewishDate);
+  console.log(jewishDateInHebrew); // { day: "ד׳", monthName: "טבת", year: "התש״פ" }
+
+  const jewishDateInHebrewStr = formatJewishDateInHebrew(jewishDate);
+  console.log(jewishDateInHebrewStr); // ד׳ טבת התש״פ
+
+  const date2 = toGregorianDate({
+    year: 5780,
+    monthName: JewishMonth.Tevet,
+    day: 4
+  });
+  console.log(date2); // Wed Jan 01 2020 00:00:00 GMT+0200 (Israel Standard Time)
   return (
-    <div>
-        const date = new Date("2020-01-01");
-        const jewishDate = toJewishDate(date);
-        console.log(jewishDate); // (${year} year: 5780, ${monthName} monthName: "Tevet", ${month} month: 4, day: 4);
-  
-        const jewishDateInEnglish = formatJewishDate(jewishDate);
-        console.log(jewishDateInEnglish); // 4 Tevet 5780
-  
-       const jewishDateInHebrew = toHebrewJewishDate(jewishDate);
-       console.log(jewishDateInHebrew); // (${day} day: "ד׳", ${monthName} monthName: "טבת", ${year} year: "התש״פ");
-  
-        const jewishDateInHebrewStr = formatJewishDateInHebrew(jewishDate);
-        console.log(jewishDateInHebrewStr); // ד׳ טבת התש״פ
-  
-        const date2 = toGregorianDate(${year} year: 5780, ${monthName} monthName: JewishMonth.Tevet, day: 4 );
-        console.log(date2); // Wed Jan 01 2020 00:00:00 GMT+0200 (Israel Standard Time)
+    <div className="App">
+      <h1>{jewishDateInHebrewStr}</h1>
+      <h2>Start editing to see some magic happen!</h2>
     </div>
-  )
+  );
 }
 
-export default JewishDate
+export default JewishDate;
+
+
