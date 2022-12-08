@@ -3,6 +3,7 @@ import '../styles/login.scss'
 import { Link } from 'react-router-dom'
 import { loginAsync } from '../User/userApi';
 import { useAppDispatch } from '../../app/hooks';
+import JewishDate from '../jewishDate/JewishDate';
 
 
 
@@ -26,8 +27,9 @@ const Login = () => {
 
 
   return (
-    
+     
      <div className='auth'>
+        
         <h1>Login</h1>
         <form onSubmit={handleLogin} >
           <input required type="text" placeholder='username' name="username"  />
