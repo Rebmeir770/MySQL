@@ -1,11 +1,13 @@
 import { FC } from "react"
-import { Music } from './GetSongs'
+import { Music } from './getSongs'
 import { Link } from "react-router-dom";
 
 interface SongCardProps{
   song: Music;
 }
-const SongsCard:FC<SongCardProps> = ({ song }) => {
+
+
+export const SongsCard:FC<SongCardProps> = ({ song }) => {
   return (
     <Link to={`/song/${song.song}`}>
       <div className="card">

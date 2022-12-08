@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import SongsCard from './SongsCard';
-import { GetSongs, Music } from './GetSongs';
-// import './breeds.scss';
+import SongsCard from './songsCard';
+import { GetSongs, Music } from './getSongs';
 
-const IndexSongs = () => {
+
+const Songs = () => {
    //set state songs
    const[songs, setSongs] = useState<Music[]>([]);
 
@@ -24,4 +24,4 @@ const IndexSongs = () => {
   );  
 };
 
-export default IndexSongs;
+export default Songs;

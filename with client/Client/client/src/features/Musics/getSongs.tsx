@@ -8,7 +8,7 @@ export interface Music {
 
 export async function GetSongs(): Promise<Music[]> {
   try {
-    const {data} = await axios.get('https://theaudiodb.p.rapidapi.com/searchalbum.php');
+    const {data} = await axios.get('https://musicbrainz.org/ws/2/artist/66c662b6-6e2f-4930-8610-912e24c63ed1?fmt=json');
         
     const {message} = data;
     console.log(message);
@@ -31,7 +31,8 @@ export default GetSongs;
 export async function seachAlbum(song: string):Promise<Music> {
     try {
       const { data } = await axios.get(
-        `https://theaudiodb.p.rapidapi.com/${seachAlbum}searchalbum.php` 
+        `https://musicbrainz.org/ws/2/${seachAlbum}artist/66c662b6-6e2f-4930-8610-912e24c63ed1?fmt=json`
+         
         
       );
       if(!data) throw new Error (`No data on image of song ${seachAlbum}`);

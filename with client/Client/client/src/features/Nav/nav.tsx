@@ -11,8 +11,8 @@ export const nav = () => {
        */}
 
        <div className="conteiner">
-          <div className="logo"></div>
-          <div className="links"></div>
+          <div className="Musics"></div>
+          <div className="Songs"></div>
        </div>
       
     
