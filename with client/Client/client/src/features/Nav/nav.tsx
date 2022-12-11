@@ -1,20 +1,21 @@
 import { Link } from "react-router-dom";
 import React from 'react'
+import '../styles/nav.scss'
 
 
 export const nav = () => {
   return (
     <div className="nav">
-      {/* <Link to="/">
+      <Link to="/">
         <div className="link">Home</div>
       </Link>
-       */}
-
-       <div className="conteiner">
-          <div className="Musics"></div>
-          <div className="Songs"></div>
-       </div>
       
+      <Link to="/login">
+        <div className="link">Login</div>
+      </Link>
+      <Link to="/register">
+        <div className="link">Register</div>
+      </Link> 
     
     </div>
   );
