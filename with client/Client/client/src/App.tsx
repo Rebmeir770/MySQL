@@ -10,33 +10,15 @@ import Musics from './features/Music/indexMusic';
 import './styles.scss';
 
 
-
-// function App() {
-//   return (
-//     <div>
-//       <Login/>
-//       <Register/>
-//     </div>
-//   );
-// }
-
-// export default App;
-
-
-
-
 const App = () => {
-
-  
   return(
     <BrowserRouter>
         <Routes>
-           <Route path="/" element={<Main />} />
-           <Route path="Login"index element={<Login/>} />
-           <Route path="Register" element={<Register/>} />
-           <Route path="Home" element={<Home/>} />
-           <Route path="Songs" element={<Songs/>}/>
-           <Route path="/song/:song" element={<Musics/>}/>   
+           <Route path="/" element={<Main />} >
+
+               <Route path="Login"index element={<Login/>} />
+               <Route path="Register" element={<Register/>} />
+          </Route>
            
         </Routes>
     </BrowserRouter>
