@@ -4,6 +4,7 @@ import Register from './features/Register/register';
 import Login from './features/Login/login';
 import Main from './features/Main/main';
 import Home from './features/Home/home';
+import Nav from "./components/nav/Nav";
 
 
 
@@ -11,6 +12,7 @@ import Home from './features/Home/home';
 const App = () => {
   return(
     <BrowserRouter>
+    <Nav/>
         <Routes>
            <Route path="/" element={<Main />} >
 

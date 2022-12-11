@@ -3,17 +3,17 @@ import React from 'react'
 import '../styles/nav.scss'
 
 
-export const nav = () => {
+export const Nav = () => {
   return (
     <div className="nav">
-      <Link to="/">
+      <Link to='/'>
         <div className="link">Home</div>
       </Link>
       
-      <Link to="/login">
+      <Link to='/login'>
         <div className="link">Login</div>
       </Link>
-      <Link to="/register">
+      <Link to='/register'>
         <div className="link">Register</div>
       </Link> 
     
@@ -21,5 +21,5 @@ export const nav = () => {
   );
 };
 
-export default nav;
+export default Nav;
 
