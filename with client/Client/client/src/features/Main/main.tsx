@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import '../Nav/nav'
+import nav from "../../components/Nav/nav";
 
 
 function Main() {
@@ -8,9 +8,8 @@ function Main() {
   return (
     
     <div>
-      
-      <Outlet />
       <nav />
+      <Outlet />
       
     </div>
   );

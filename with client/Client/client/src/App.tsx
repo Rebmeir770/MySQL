@@ -1,5 +1,5 @@
-import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import your route components too
 import Register from './features/Register/register';
 import Login from './features/Login/login';
 import Main from './features/Main/main';
