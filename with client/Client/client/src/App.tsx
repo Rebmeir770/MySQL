@@ -5,6 +5,7 @@ import Login from './features/Login/login';
 import Main from './features/Main/main';
 import Home from './features/Home/home';
 import Nav from "./components/nav/Nav";
+import Ready from "./features/ready/Ready";
 
 
 
@@ -12,6 +13,7 @@ import Nav from "./components/nav/Nav";
 const App = () => {
   return(
     <BrowserRouter>
+    <Ready/>
     <Nav/>
         <Routes>
            <Route path="/" element={<Main />} >

@@ -5,7 +5,7 @@ export const home = () => {
   return (
     <div className='logo'>
       
-        <h1>s</h1>
+        
         
       </div>
   )

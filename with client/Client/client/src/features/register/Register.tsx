@@ -1,11 +1,15 @@
 import React from 'react'
-import { useAppDispatch } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { registerAsync } from '../User/userApi';
 import '../styles/register.scss'
+import { selectUser } from '../User/userSlice';
 
 const Register = () => {
 
   const dispatch = useAppDispatch();
+  const user = useAppSelector(selectUser)
+
+  console.log(user)
 
   function handleRegister(ev:any){
     ev.preventDefault();
