@@ -7,10 +7,15 @@ interface userRegister {
     name: string,
 }
 
-export const registerAsync = createAsyncThunk('user/register', async ({ email, password, name }: userRegister) => {
-    const {data} = await axios.post('/api/users/register', {email, password, name}) 
-    return data
-})
+export const registerAsync = createAsyncThunk(
+    'user/register',
+    async ({ email, password, name }: userRegister) => {
+     //   const {data} = await axios.post('/api/users/register', {email, password, name}) 
+       const {data} = await axios.post(`/api/users/register?email=${email}&password=${password}&name=${name}`) 
+       return data;
+    }
+);
+
 
 interface userLogin {
     password: string,

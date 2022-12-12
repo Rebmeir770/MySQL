@@ -7,9 +7,9 @@ import { selectUser } from '../User/userSlice';
 const Register = () => {
 
   const dispatch = useAppDispatch();
-  const user = useAppSelector(selectUser)
+  const user = useAppSelector(selectUser);
 
-  console.log(user)
+  console.log(user);
 
   function handleRegister(ev:any){
     ev.preventDefault();
