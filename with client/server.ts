@@ -1,8 +1,29 @@
 import express from "express";
 import mysql from "mysql";
+import SpotifyWebApi from 'spotify-web-api-node';
 
 const app = express();
 const port: number = 3000;
+
+app.post('/ready', (req, res) => {
+  const code = req.body.code
+  const spotifyApi = new SpotifyWebApi({
+    redirectUri : 'https://localhost:3000',
+    clientId: '245995995f1c4a328408b62ec83e8ab7',
+    clientSecret: '223155f529cb4c70b2601614f052d019'
+  })
+
+  spotifyApi.authorizationCodeGrant(code).then(data =>{
+    res.json({
+      accessToken: data.body.accces_token,
+      refreshToken: data.body.refresh_token,
+      expiresIn: data.body.expires_in
+    })
+  }) 
+   .catch(() => {
+    res.sendStatus(400)
+   })
+})
 
 app.use(express.static("./client/build"));
 app.use(express.json());

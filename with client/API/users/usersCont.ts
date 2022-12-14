@@ -15,7 +15,7 @@ export function register(req, res) {
             console.log(fields);
             try {
                 if (err) throw err;
-                res.send({ ok: true, user: { email, name } });
+                res.send({ ok: true, user: {email, name} });
             } catch (error) {
                 console.error(error);
                 res.status(500).send({ error: error.messege })

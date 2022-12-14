@@ -8,7 +8,7 @@ import Nav from "./components/nav/Nav";
 import Ready from "./features/ready/Ready";
 
 
-
+const code = new URLSearchParams(window.location.search).get('code')
 
 const App = () => {
   return(
