@@ -6,14 +6,17 @@ import Main from './features/Main/main';
 import Home from './features/Home/home';
 import Nav from "./components/nav/Nav";
 import Ready from "./features/ready/Ready";
+import Dashboard from "./features/dashboard/Dashboard";
+import { string } from "joi";
 
 
 const code = new URLSearchParams(window.location.search).get('code')
 
 const App = () => {
   return(
+     
     <BrowserRouter>
-    <Ready/>
+    {/* <Ready/>  */}
     <Nav/>
         <Routes>
            <Route path="/" element={<Main />} >
@@ -23,7 +26,7 @@ const App = () => {
                <Route path="Register" element={<Register/>} />
 
           </Route>
-           
+    
         </Routes>
     </BrowserRouter>
 
