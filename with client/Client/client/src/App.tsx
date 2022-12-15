@@ -16,7 +16,7 @@ const App = () => {
   return(
      
     <BrowserRouter>
-    {/* <Ready/>  */}
+    <Ready/> 
     <Nav/>
         <Routes>
            <Route path="/" element={<Main />} >
