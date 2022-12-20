@@ -19,7 +19,12 @@ const App = () => {
     <BrowserRouter>
       <JewishDate/>
       <Nav/> 
-      code? <Dashboard  path={code} />:<Ready/>
+      code
+        ? (
+          <Dashboard path={code} />
+            // code
+          </Dashboard>
+        ) : <Ready/>
 
         <Routes>
            <Route path="/" element={<Main />} >
