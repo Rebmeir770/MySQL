@@ -1,10 +1,3 @@
-// import {
-//     toJewishDate, toGregorianDate, formatJewishDateInHebrew, toHebrewJewishDate, JewishMonth, formatJewishDate 
-// } from "jewish-date";
-// import React from 'react'
-
-
-import "./styles.css";
 import {
   toJewishDate,
   toGregorianDate,

@@ -7,7 +7,8 @@ import Home from './features/Home/home';
 import Nav from "./components/nav/Nav";
 import Ready from "./features/ready/Ready";
 import Dashboard from "./features/dashboard/Dashboard";
-import { string } from "joi";
+import JewishDate from "./features/jewishDate/JewishDate";
+
 
 
 const code = new URLSearchParams(window.location.search).get('code')
@@ -16,8 +17,10 @@ const App = () => {
   return(
      
     <BrowserRouter>
-    <Ready/> 
-    <Nav/>
+      <JewishDate/>
+      <Nav/> 
+      code? <Dashboard  path={code} />:<Ready/>
+
         <Routes>
            <Route path="/" element={<Main />} >
 
