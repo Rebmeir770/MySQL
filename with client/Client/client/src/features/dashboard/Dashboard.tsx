@@ -14,7 +14,7 @@ const Dashboard: React.FC<CodeProps> = (code:any) => {
 
   return (
     <div>
-      {code}
+      {code?code:null}
     </div>
   )
 }

@@ -12,19 +12,22 @@ import { CodeProps } from "./features/dashboard/Dashboard";
 
 
 const code = new URLSearchParams(window.location.search).get('code')
+console.log(code)
 
 
 
-const App: React.FC<CodeProps> = (code:any) => {
+// const App: React.FC<CodeProps> = (code:any) => {
  
-  
+const App = () => {  
 
   return(
     
     <BrowserRouter>
       <JewishDate/>
       <Nav/> 
-      code? <Dashboard code={code} />:<Ready/>
+      <Ready/>
+      {code?<Dashboard code={code} />:
+      <Ready/>}
         <Routes>
            <Route path="/" element={<Main />} >
 
