@@ -8,21 +8,23 @@ import Nav from "./components/nav/Nav";
 import Ready from "./features/ready/Ready";
 import Dashboard from "./features/dashboard/Dashboard";
 import JewishDate from "./features/jewishDate/JewishDate";
-import { Code } from "./features/dashboard/Dashboard";
+import { CodeProps } from "./features/dashboard/Dashboard";
 
 
 const code = new URLSearchParams(window.location.search).get('code')
 
 
 
-const App: React.FC<Code> = (code:any) => {
+const App: React.FC<CodeProps> = (code:any) => {
+ 
+  
+
   return(
-     
+    
     <BrowserRouter>
       <JewishDate/>
       <Nav/> 
       code? <Dashboard code={code} />:<Ready/>
-
         <Routes>
            <Route path="/" element={<Main />} >
 
@@ -31,7 +33,7 @@ const App: React.FC<Code> = (code:any) => {
                <Route path="Register" element={<Register/>} />
 
           </Route>
-    
+          
         </Routes>
     </BrowserRouter>
 
