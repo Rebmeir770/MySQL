@@ -51,7 +51,7 @@ import usersRoute from './API/users/usersRoute'
 app.use('/api/users', usersRoute);
 
 
-
+app.use('*',express.static("./client/build"))
 
 app.listen(port, () => {
   return console.log(`Server is listening at http://localhost:${port}`);

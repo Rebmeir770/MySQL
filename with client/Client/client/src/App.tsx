@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import your route components too
-import Register from './features/register/Register';
+import Register from './features/register/register';
 import Login from './features/login/Login';
 import Main from './features/Main/main';
 import Home from './features/Home/home';
