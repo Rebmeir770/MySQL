@@ -5,11 +5,11 @@ import Auth from '../authentication/Auth';
 
 
 export interface CodeProps {
-  code: any
+  code: string|null
   
 }
 
-const Dashboard: React.FC<CodeProps> = (code:any) => {
+const Dashboard: React.FC<CodeProps> = ({code}) => {
   const accessToken = Auth(code)
 
   return (
