@@ -10,13 +10,6 @@ import Ready from "./features/ready/Ready";
 import Dashboard from "./features/dashboard/Dashboard";
 import JewishDate from "./features/jewishDate/JewishDate";
 
-
-
-
-
-
-
-
 const App = () => {
  const [codeKey, setCodeKey] = useState<string|null>(null)
   useEffect(()=>{
