@@ -11,33 +11,36 @@ const Auth = (code:any) => {
      const [expiresIn, setExpiresIn] = useState()
 
      useEffect(() => {
-       axios
-           .post('http://localhost:3000/ready', {
-            code,
-           })
-           .then(res => {
-            setAccessToken(res.data.accessToken)
-            setRefreshToken(res.data.refreshToken)
-            setExpiresIn(res.data.expiresIn)
-            window.history.pushState({}, "/", null )
-           })
-           .catch(() => {
-            
-            window.location.assign("/")
-
-           })
+       axios.post('http://localhost:3000/ready', {
+          code,
+       })
+       .then(res => {
+          setAccessToken(res.data.accessToken)
+          setRefreshToken(res.data.refreshToken)
+          setExpiresIn(res.data.expiresIn)
+          window.history.pushState({}, "/", null )
+       })
+       .catch(() => {
+          window.location.assign("/")
+       })
      }, [code])
 
      useEffect(() => {
-       
+       axios.post('http://localhost:3000/refresh', {
+          refreshToken,
+       })
+       .then(res => {
+          setAccessToken(res.data.accessToken)
+          setRefreshToken(res.data.refreshToken)
+          setExpiresIn(res.data.expiresIn)
+          window.history.pushState({}, "/", null )
+        })
+        .catch(() => {
+          window.location.assign("/")
+        })
+     },[refreshToken, expiresIn])
      
-       
-     }, [refreshToken, expiresIn])
-
-     return accessToken
-     
-     
-  
+     return accessToken 
 }
 
 export default Auth

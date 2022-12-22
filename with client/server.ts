@@ -7,8 +7,31 @@ import bodyParser from "body-parser";
 const app = express();
 const port: number = 3000;
 
-app.use(cors())
-app.use(bodyParser.json())
+app.use(cors());
+app.use(bodyParser.json());
+
+app.post('/refresh', (req,res) => {
+  const refreshToken = req.body.refreshToken
+  const spotifyApi = new SpotifyWebApi({
+    redirectUri : 'https://localhost:3000',
+    clientId: '245995995f1c4a328408b62ec83e8ab7',
+    clientSecret: '223155f529cb4c70b2601614f052d019'
+    
+  })
+
+  spotifyApi.refreshAccessToken().then(
+    (data) => {
+      console.log(data.body);
+  
+      
+    }).catch(() => {
+      res.sendStatus(400)
+    })
+   
+})
+  
+
+
 
 app.post('/ready', (req, res) => {
   const code = req.body.code
@@ -16,6 +39,7 @@ app.post('/ready', (req, res) => {
     redirectUri : 'https://localhost:3000',
     clientId: '245995995f1c4a328408b62ec83e8ab7',
     clientSecret: '223155f529cb4c70b2601614f052d019'
+
   })
 
   spotifyApi.authorizationCodeGrant(code).then(data =>{
