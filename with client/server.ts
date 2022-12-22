@@ -1,9 +1,14 @@
 import express from "express";
 import mysql from "mysql";
 import SpotifyWebApi from 'spotify-web-api-node';
+import cors from "cors";
+import bodyParser from "body-parser";
 
 const app = express();
 const port: number = 3000;
+
+app.use(cors())
+app.use(bodyParser.json())
 
 app.post('/ready', (req, res) => {
   const code = req.body.code

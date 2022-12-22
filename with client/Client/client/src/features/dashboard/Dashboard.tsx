@@ -1,9 +1,6 @@
 import React from 'react';
 import Auth from '../authentication/Auth';
 
-
-
-
 export interface CodeProps {
   code: string|null
   

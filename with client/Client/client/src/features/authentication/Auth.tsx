@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { textChangeRangeIsUnchanged } from 'typescript';
+import { NULL } from 'sass';
+import { prototype } from 'stream';
+import { string } from 'joi';
+
 
 const Auth = (code:any) => {
      const [accessToken, setAccessToken] = useState()
@@ -13,9 +16,26 @@ const Auth = (code:any) => {
             code,
            })
            .then(res => {
-            console.log(res.data)
+            setAccessToken(res.data.accessToken)
+            setRefreshToken(res.data.refreshToken)
+            setExpiresIn(res.data.expiresIn)
+            window.history.pushState({}, "/", null )
+           })
+           .catch(() => {
+            
+            window.location.assign("/")
+
            })
      }, [code])
+
+     useEffect(() => {
+       
+     
+       
+     }, [refreshToken, expiresIn])
+
+     return accessToken
+     
      
   
 }
