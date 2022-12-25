@@ -13,29 +13,27 @@ const app = express_1.default();
 const port = 3000;
 app.use(cors_1.default());
 app.use(body_parser_1.default.json());
-// app.post('/refresh', (req,res) => {
-//   const refreshToken = req.body.refreshToken
-//   const spotifyApi = new SpotifyWebApi({
-//     redirectUri : 'https://localhost:3000',
-//     clientId: '245995995f1c4a328408b62ec83e8ab7',
-//     clientSecret: '223155f529cb4c70b2601614f052d019'
-//   })
-//   spotifyApi.refreshAccessToken()
-//   .then(
-//     (data) => {
-//       res.json({
-//         accessToken: data.body.accessToken,
-//         expiresIn: data.body.expiresIn
-//       })  
-//     }).catch((err) => {
-//       console.log(err)
-//       res.sendStatus(400)
-//     })  
-// })
+app.post('/refresh', (req, res) => {
+    const refreshToken = req.body.refreshToken;
+    const spotifyApi = new spotify_web_api_node_1.default({
+        redirectUri: 'https://localhost:3001',
+        clientId: '245995995f1c4a328408b62ec83e8ab7',
+        clientSecret: '223155f529cb4c70b2601614f052d019'
+    });
+    spotifyApi.refreshAccessToken().then((data) => {
+        res.json({
+            accessToken: data.body.accessToken,
+            expiresIn: data.body.expiresIn
+        });
+    }).catch((err) => {
+        console.log(err);
+        res.sendStatus(400);
+    });
+});
 app.post('/ready', (req, res) => {
     const code = req.body.code;
     const spotifyApi = new spotify_web_api_node_1.default({
-        redirectUri: 'https://localhost:3000',
+        redirectUri: 'https://localhost:3001',
         clientId: '245995995f1c4a328408b62ec83e8ab7',
         clientSecret: '223155f529cb4c70b2601614f052d019'
     });
