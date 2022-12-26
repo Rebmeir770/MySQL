@@ -10,13 +10,13 @@ const spotify_web_api_node_1 = __importDefault(require("spotify-web-api-node"));
 const cors_1 = __importDefault(require("cors"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const app = express_1.default();
-const port = 3000;
+const port = 4000;
 app.use(cors_1.default());
 app.use(body_parser_1.default.json());
 app.post('/refresh', (req, res) => {
     const refreshToken = req.body.refreshToken;
     const spotifyApi = new spotify_web_api_node_1.default({
-        redirectUri: 'https://localhost:3000',
+        redirectUri: 'https://localhost:4000',
         clientId: '245995995f1c4a328408b62ec83e8ab7',
         clientSecret: '223155f529cb4c70b2601614f052d019'
     });
@@ -33,7 +33,7 @@ app.post('/refresh', (req, res) => {
 app.post('/ready', (req, res) => {
     const code = req.body.code;
     const spotifyApi = new spotify_web_api_node_1.default({
-        redirectUri: 'https://localhost:3000',
+        redirectUri: 'https://localhost:4000',
         clientId: '245995995f1c4a328408b62ec83e8ab7',
         clientSecret: '223155f529cb4c70b2601614f052d019'
     });
