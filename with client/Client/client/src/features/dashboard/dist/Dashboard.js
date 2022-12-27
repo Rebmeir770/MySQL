@@ -3,6 +3,7 @@ exports.__esModule = true;
 var react_1 = require("react");
 var Auth_1 = require("../authentication/Auth");
 var react_2 = require("react");
+require("./../styles/");
 var Dashboard = function (_a) {
     var code = _a.code;
     var accessToken = Auth_1["default"](code);
@@ -25,7 +26,7 @@ var Dashboard = function (_a) {
             console.error(error);
         }
     }
-    return (react_1["default"].createElement("div", { className: 'seacrhSongs' },
+    return (react_1["default"].createElement("div", { className: 'container' },
         react_1["default"].createElement("form", { onSubmit: handleSubmit },
             react_1["default"].createElement("input", { type: "search", name: 'search', placeholder: 'Seacrh Songs/Artists', onChange: handleSearch }),
             react_1["default"].createElement("button", null, "SEARCH"))));

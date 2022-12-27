@@ -7,6 +7,8 @@ import {
   JewishMonth
 } from "jewish-date";
 
+
+
 export  function JewishDate() {
   const date = new Date();
   const jewishDate = toJewishDate(date);
@@ -29,8 +31,8 @@ export  function JewishDate() {
   console.log(date2); // Wed Jan 01 2020 00:00:00 GMT+0200 (Israel Standard Time)
   return (
     <div className="App">
-      <h1>{jewishDateInHebrewStr}</h1>
-      <h2>Start editing to see some magic happen!</h2>
+      <h6>{jewishDateInHebrewStr}</h6>
+
     </div>
   );
 }

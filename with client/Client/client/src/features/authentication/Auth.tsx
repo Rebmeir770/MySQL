@@ -10,7 +10,7 @@ const Auth = (code:any) => {
      
 
      useEffect(() => {
-       axios.post('http://localhost:3000/ready', {
+       axios.post('http://localhost:4000/ready', {
           code,
        })
        .then(res => {
@@ -27,7 +27,7 @@ const Auth = (code:any) => {
      useEffect(() => {
           if (!refreshToken || !expiresIn) return
           const timeout = setTimeout (() => {
-               axios.post('http://localhost:3000/refresh', {
+               axios.post('http://localhost:4000/refresh', {
                     refreshToken,
                  })
                  .then(res => {

@@ -7,7 +7,7 @@ var Auth = function (code) {
     var _b = react_1.useState(), refreshToken = _b[0], setRefreshToken = _b[1];
     var _c = react_1.useState(), expiresIn = _c[0], setExpiresIn = _c[1];
     react_1.useEffect(function () {
-        axios_1["default"].post('http://localhost:3000/ready', {
+        axios_1["default"].post('http://localhost:4000/ready', {
             code: code
         })
             .then(function (res) {
@@ -23,7 +23,7 @@ var Auth = function (code) {
         if (!refreshToken || !expiresIn)
             return;
         var timeout = setTimeout(function () {
-            axios_1["default"].post('http://localhost:3000/refresh', {
+            axios_1["default"].post('http://localhost:4000/refresh', {
                 refreshToken: refreshToken
             })
                 .then(function (res) {

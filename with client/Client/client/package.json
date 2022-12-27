@@ -14,7 +14,7 @@
     "@types/react-dom": "^18.0.9",
     "axios": "^1.2.1",
     "axois": "^0.0.1-security",
-    "jewish-date": "^1.0.7",
+    "jewish-date": "^1.0.8",
     "joi": "^17.7.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
