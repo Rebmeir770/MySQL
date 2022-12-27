@@ -1,7 +1,7 @@
 import React from 'react';
 import Auth from '../authentication/Auth';
 import { useState } from 'react';
-import "./../styles/"
+
 
 export interface CodeProps {
   code: string|null
@@ -31,7 +31,7 @@ const Dashboard: React.FC<CodeProps> = ({code}) => {
   }
 
   return (
-    <div className='container'>
+    <div className='container2'>
       <form onSubmit={handleSubmit}>
          <input type="search" name='search' placeholder='Seacrh Songs/Artists'onChange={handleSearch}  />
          <button>SEARCH</button>
