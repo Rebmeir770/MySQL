@@ -19,8 +19,9 @@ const Auth = (code:any) => {
           setExpiresIn(res.data.expiresIn)
           window.history.pushState({}, "/", null )
        })
-       .catch((e) => {
-         alert("Error"+JSON.stringify(e))
+       .catch(() => {
+      //  .catch((e) => {
+      //    alert("Error"+JSON.stringify(e))
           window.location.assign("/")
        })
      }, [code])
@@ -35,8 +36,9 @@ const Auth = (code:any) => {
                     setAccessToken(res.data.accessToken)
                     setRefreshToken(res.data.refreshToken)  
                   })
-                  .catch((e) => {
-                     alert("Error"+JSON.stringify(e))
+                  .catch(() => {
+                  // .catch((e) => {
+                  //    alert("Error"+JSON.stringify(e))
                     window.location.assign("/")
                })
           },(expiresIn - 60)* 1000)
