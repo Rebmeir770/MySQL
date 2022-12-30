@@ -16,7 +16,7 @@ const App = () => {
     const codeKeyStart = new URLSearchParams(window.location.search).get('code');
     console.log(codeKeyStart)
     setCodeKey(codeKeyStart);
-  },[])
+  },[codeKey])
 
   return(
     

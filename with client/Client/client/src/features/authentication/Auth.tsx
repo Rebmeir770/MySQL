@@ -10,7 +10,7 @@ const Auth = (code:any) => {
      
 
      useEffect(() => {
-       axios.post('http://localhost:4000/ready', {
+       axios.post('http://localhost:3000/ready', {
           code,
        })
        .then(res => {
@@ -19,9 +19,9 @@ const Auth = (code:any) => {
           setExpiresIn(res.data.expiresIn)
           window.history.pushState({}, "/", null )
        })
-       .catch(() => {
-      //  .catch((e) => {
-      //    alert("Error"+JSON.stringify(e))
+      //  .catch(() => {
+       .catch((e) => {
+         alert("Error"+JSON.stringify(e))
           window.location.assign("/")
        })
      }, [code])
@@ -29,16 +29,16 @@ const Auth = (code:any) => {
      useEffect(() => {
           if (!refreshToken || !expiresIn) return
           const timeout = setTimeout (() => {
-               axios.post('http://localhost:4000/refresh', {
+               axios.post('http://localhost:3000/refresh', {
                     refreshToken,
                  })
                  .then(res => {
                     setAccessToken(res.data.accessToken)
                     setRefreshToken(res.data.refreshToken)  
                   })
-                  .catch(() => {
-                  // .catch((e) => {
-                  //    alert("Error"+JSON.stringify(e))
+                  // .catch(() => {
+                  .catch((e) => {
+                     alert("Error"+JSON.stringify(e))
                     window.location.assign("/")
                })
           },(expiresIn - 60)* 1000)
