@@ -24,6 +24,7 @@ const App = () => {
       <JewishDate/>
       <Nav/> 
       {codeKey? <Dashboard code={codeKey} />:<Ready/>}
+      
         <Routes>
            <Route path="/" element={<Main />} >
 
@@ -32,7 +33,7 @@ const App = () => {
                <Route path="Register" element={<Register/>} />
 
           </Route>
-          
+         
         </Routes>
     </BrowserRouter>
 

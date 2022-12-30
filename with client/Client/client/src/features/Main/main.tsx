@@ -3,6 +3,7 @@ import Nav from "../../components/nav/Nav";
 
 
 
+
 function Main() {
 
   
@@ -11,7 +12,7 @@ function Main() {
     <div>
       <Nav />
       <Outlet />
-      
+        
     </div>
   );
 }

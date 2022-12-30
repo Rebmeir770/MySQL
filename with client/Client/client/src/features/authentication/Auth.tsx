@@ -19,7 +19,7 @@ const Auth = (code:any) => {
           setExpiresIn(res.data.expiresIn)
           window.history.pushState({}, "/", null )
        })
-      //  .catch(() => {
+      //  .catch((e) => {
        .catch((e) => {
          alert("Error"+JSON.stringify(e))
           window.location.assign("/")
