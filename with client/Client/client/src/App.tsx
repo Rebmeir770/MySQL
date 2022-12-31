@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Register from './features/register/Register';
 import Login from './features/login/Login';
 import Main from './features/Main/main';
-import Home from './features/Home/home';
+import Home from './features/home/Home';
 import Nav from "./components/nav/Nav";
 import Ready from "./features/ready/Ready";
 import Dashboard from "./features/dashboard/Dashboard";
