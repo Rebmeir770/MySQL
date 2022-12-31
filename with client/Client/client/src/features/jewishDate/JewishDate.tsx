@@ -6,6 +6,7 @@ import {
   toHebrewJewishDate,
   JewishMonth
 } from "jewish-date";
+import '../styles/jewishdate.scss';
 
 
 
