@@ -19,7 +19,7 @@ const Auth = (code:any) => {
           setExpiresIn(res.data.expiresIn)
           window.history.pushState({}, "/", null )
        })
-      //  .catch((e) => {
+      //   .catch((e) => {
        .catch((e) => {
          alert("Error"+JSON.stringify(e))
           window.location.assign("/")
@@ -36,7 +36,7 @@ const Auth = (code:any) => {
                     setAccessToken(res.data.accessToken)
                     setRefreshToken(res.data.refreshToken)  
                   })
-                  // .catch(() => {
+                  //  .catch(() => {
                   .catch((e) => {
                      alert("Error"+JSON.stringify(e))
                     window.location.assign("/")

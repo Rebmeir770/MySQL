@@ -4,15 +4,16 @@ import Nav from "../../components/nav/Nav";
 
 
 
+
 function Main() {
 
   
   return (
     
     <div>
-      <Nav />
-      <Outlet />
-        
+      
+      <Outlet/>
+      <Nav/>
     </div>
   );
 }

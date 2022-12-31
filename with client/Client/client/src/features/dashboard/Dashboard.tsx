@@ -1,7 +1,7 @@
 import React from 'react';
 import Auth from '../authentication/Auth';
 import { useState } from 'react';
-
+import '../styles/dashboard.scss';
 
 export interface CodeProps {
   code: string|null
@@ -9,7 +9,7 @@ export interface CodeProps {
 }
 
 const Dashboard: React.FC<CodeProps> = ({code}) => {
-  const accessToken = Auth(code)
+  //const accessToken = Auth(code)
   const [seach, setsearch] = useState<string>("")
    
   function handleSearch(ev:any) {
@@ -29,7 +29,6 @@ const Dashboard: React.FC<CodeProps> = ({code}) => {
       console.error(error);
     }
   }
-
   return (
     <div className='container2'>
       <form onSubmit={handleSubmit}>

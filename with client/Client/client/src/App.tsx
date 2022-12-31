@@ -10,26 +10,24 @@ import Ready from "./features/ready/Ready";
 import Dashboard from "./features/dashboard/Dashboard";
 import JewishDate from "./features/jewishDate/JewishDate";
 
+
 const App = () => {
- const [codeKey, setCodeKey] = useState<string|null>(null)
-  useEffect(()=>{
-    const codeKeyStart = new URLSearchParams(window.location.search).get('code');
-    console.log(codeKeyStart)
-    setCodeKey(codeKeyStart);
-  },[codeKey])
+ 
 
   return(
     
     <BrowserRouter>
       <JewishDate/>
       <Nav/> 
-      {codeKey? <Dashboard code={codeKey} />:<Ready/>}
+      
+      
       
         <Routes>
+           
            <Route path="/" element={<Main />} >
-
+               
                <Route index element={<Home />} />
-               <Route path="login"index element={<Login/>} />
+               <Route path="Login"index element={<Login/>} />
                <Route path="Register" element={<Register/>} />
 
           </Route>

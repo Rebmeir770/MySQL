@@ -9,13 +9,9 @@ console.log(AUTH_URL);
 function Ready() {
   return (
     <div className='container'>
-      <button>
-        <a href={AUTH_URL}>
-           
-        <img src="https://dcassetcdn.com/design_img/1520978/501634/501634_7707192_1520978_568d7453_image.png" alt="logo" />
-            
+        <a href={AUTH_URL}> 
+          <img src="https://dcassetcdn.com/design_img/1520978/501634/501634_7707192_1520978_568d7453_image.png" alt="logo" />
         </a>
-      </button> 
     </div>
   )
 }
