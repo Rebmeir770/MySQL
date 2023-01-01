@@ -1,17 +1,33 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Auth from '../authentication/Auth';
 import { useState } from 'react';
 import '../styles/dashboard.scss';
+import SpotifyWebApi from "spotify-web-api-node";
 
+
+
+const spotifyApi = new SpotifyWebApi({
+  clientId: "245995995f1c4a328408b62ec83e8ab7",
+})
 export interface CodeProps {
   code: string|null
   
 }
 
 const Dashboard: React.FC<CodeProps> = ({code}) => {
-  //const accessToken = Auth(code)
+  const accessToken = (code)
   const [seach, setsearch] = useState<string>("")
-   
+  const [searchResults, setSearchResults] = useState([])
+  
+  useEffect(() =>{
+    if (!accessToken)return 
+    spotifyApi.setAccessToken(accessToken);
+  },[accessToken])
+
+  useEffect(() =>{
+    if (!seach) return setSearchResults([]);
+  },[seach, accessToken])
+
   function handleSearch(ev:any) {
     try {
       setsearch(ev.target.value);
@@ -40,3 +56,11 @@ const Dashboard: React.FC<CodeProps> = ({code}) => {
 }
 
 export default Dashboard
+
+
+
+
+
+
+
+

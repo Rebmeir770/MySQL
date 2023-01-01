@@ -52,6 +52,7 @@
     ]
   },
   "devDependencies": {
+    "@types/spotify-web-api-node": "^5.0.7",
     "sass": "^1.57.1"
   }
 }

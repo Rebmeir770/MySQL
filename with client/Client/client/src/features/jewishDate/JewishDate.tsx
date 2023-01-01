@@ -31,7 +31,7 @@ export  function JewishDate() {
   });
   //console.log(date2); // Wed Jan 01 2020 00:00:00 GMT+0200 (Israel Standard Time)
   return (
-    <div className="App">
+    <div className="Appjw">
       <h6>{jewishDateInHebrewStr}</h6>
 
     </div>
