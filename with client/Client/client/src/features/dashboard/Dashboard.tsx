@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useState   } from 'react';
 import Auth from '../authentication/Auth';
-import { useState } from 'react';
 import '../styles/dashboard.scss';
 import SpotifyWebApi from "spotify-web-api-node";
+import { resourceLimits } from 'worker_threads';
 
 
 
@@ -26,6 +26,26 @@ const Dashboard: React.FC<CodeProps> = ({code}) => {
 
   useEffect(() =>{
     if (!seach) return setSearchResults([]);
+    if(!accessToken) return
+    
+    // spotifyApi.searchTracks(seach).then(res => {
+    //   // @ts-ignore
+    //   res.body.tracks.items.map(track =>{
+    //     const smallestAlbumImage = track.album.images.reduce(
+    //        (smallest, image) =>{
+    //         // @ts-ignore
+    //       if (image.height < smallest.height) return image
+    //       return smallest
+    //     }, track.album.images[0])
+    //     return{
+    //       artist: track.artists[0].name,
+    //       title: track.name,
+    //       uri:track.uri,
+    //       // @ts-ignore
+    //       albumUrl:smallestAlbumImage.uri
+    //     }
+    //   })
+    // })
   },[seach, accessToken])
 
   function handleSearch(ev:any) {
