@@ -28,24 +28,24 @@ const Dashboard: React.FC<CodeProps> = ({code}) => {
     if (!seach) return setSearchResults([]);
     if(!accessToken) return
     
-    // spotifyApi.searchTracks(seach).then(res => {
-    //   // @ts-ignore
-    //   res.body.tracks.items.map(track =>{
-    //     const smallestAlbumImage = track.album.images.reduce(
-    //        (smallest, image) =>{
-    //         // @ts-ignore
-    //       if (image.height < smallest.height) return image
-    //       return smallest
-    //     }, track.album.images[0])
-    //     return{
-    //       artist: track.artists[0].name,
-    //       title: track.name,
-    //       uri:track.uri,
-    //       // @ts-ignore
-    //       albumUrl:smallestAlbumImage.uri
-    //     }
-    //   })
-    // })
+    spotifyApi.searchTracks(seach).then(res => {
+      // @ts-ignore
+      res.body.tracks.items.map(track =>{
+        const smallestAlbumImage = track.album.images.reduce(
+           (smallest, image) =>{
+            // @ts-ignore
+          if (image.height < smallest.height) return image
+          return smallest
+        }, track.album.images[0])
+        return{
+          artist: track.artists[0].name,
+          title: track.name,
+          uri:track.uri,
+          // @ts-ignore
+          albumUrl:smallestAlbumImage.uri
+        }
+      })
+    })
   },[seach, accessToken])
 
   function handleSearch(ev:any) {
