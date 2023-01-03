@@ -17,7 +17,7 @@ export interface CodeProps {
 const Dashboard: React.FC<CodeProps> = ({code}) => {
   const accessToken = (code)
   const [seach, setsearch] = useState<string>("")
-  const [searchResults, setSearchResults] = useState([])
+  const [searchResults, setSearchResults] = useState<any[]>([])
   
   useEffect(() =>{
     if (!accessToken)return 
@@ -40,9 +40,9 @@ const Dashboard: React.FC<CodeProps> = ({code}) => {
         return{
           artist: track.artists[0].name,
           title: track.name,
-          uri:track.uri,
+          uri: track.uri,
           // @ts-ignore
-          albumUrl:smallestAlbumImage.uri
+          albumUrl: smallestAlbumImage.uri
         }
       })
     })
