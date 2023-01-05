@@ -10,6 +10,7 @@ const Auth = (code:any) => {
      
 
      useEffect(() => {
+      
        axios.post('http://localhost:3000/ready', {
           code,
        })
@@ -19,7 +20,7 @@ const Auth = (code:any) => {
           setExpiresIn(res.data.expiresIn)
           window.history.pushState({}, "/", null )
        })
-      //   .catch((e) => {
+      //   .catch(() => {
        .catch((e) => {
          alert("Error"+JSON.stringify(e))
           window.location.assign("/")
@@ -29,6 +30,7 @@ const Auth = (code:any) => {
      useEffect(() => {
           if (!refreshToken || !expiresIn) return
           const timeout = setTimeout (() => {
+            
                axios.post('http://localhost:3000/refresh', {
                     refreshToken,
                  })

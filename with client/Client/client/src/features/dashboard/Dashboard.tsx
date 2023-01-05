@@ -5,19 +5,20 @@ import SpotifyWebApi from "spotify-web-api-node";
 import { resourceLimits } from 'worker_threads';
 
 
-
-const spotifyApi = new SpotifyWebApi({
-  clientId: "245995995f1c4a328408b62ec83e8ab7",
-})
 export interface CodeProps {
   code: string|null
   
 }
 
+const spotifyApi = new SpotifyWebApi({
+  clientId: "245995995f1c4a328408b62ec83e8ab7",
+})
+
+
 const Dashboard: React.FC<CodeProps> = ({code}) => {
   const accessToken = (code)
   const [seach, setsearch] = useState<string>("")
-  const [searchResults, setSearchResults] = useState<any[]>([])
+  const [searchResults, setSearchResults] = useState<any>([])
   
   useEffect(() =>{
     if (!accessToken)return 
@@ -29,7 +30,9 @@ const Dashboard: React.FC<CodeProps> = ({code}) => {
     if(!accessToken) return
     
     spotifyApi.searchTracks(seach).then(res => {
-      // @ts-ignore
+
+      try {
+        // @ts-ignore
       res.body.tracks.items.map(track =>{
         const smallestAlbumImage = track.album.images.reduce(
            (smallest, image) =>{
@@ -45,6 +48,10 @@ const Dashboard: React.FC<CodeProps> = ({code}) => {
           albumUrl: smallestAlbumImage.uri
         }
       })
+      } catch (error) {
+        console.error(error);
+      }
+      
     })
   },[seach, accessToken])
 
@@ -70,6 +77,7 @@ const Dashboard: React.FC<CodeProps> = ({code}) => {
       <form onSubmit={handleSubmit}>
          <input type="search" name='search' placeholder='Seacrh Songs/Artists'onChange={handleSearch}  />
          <button>SEARCH</button>
+         <div className="Songs">Songs</div>
       </form>
     </div>
   )
