@@ -14,7 +14,7 @@ app.post('/refresh', (req,res) => {
   const refreshToken = req.body.refreshToken
   const spotifyApi = new SpotifyWebApi({
     redirectUri : 'https://localhost:3000',
-    clientId: '245995995f1c4a328408b62ec83e8ab7',
+    clientId: ' 245995995f1c4a328408b62ec83e8ab7',
     clientSecret: '392ab88333794a2ab6cfce7009342366'
     // redirectUri: process.env.REDIRECT_URI,
     // clientId: process.env.CLIENT_ID,
@@ -37,7 +37,7 @@ app.post('/ready', (req, res) => {
   const code = req.body.code
   const spotifyApi = new SpotifyWebApi({
     redirectUri : 'https://localhost:3000',
-    clientId: '245995995f1c4a328408b62ec83e8ab7',
+    clientId: ' 245995995f1c4a328408b62ec83e8ab7',
     clientSecret: '392ab88333794a2ab6cfce7009342366'
     // redirectUri: process.env.REDIRECT_URI,
     // clientId: process.env.CLIENT_ID,
@@ -85,5 +85,5 @@ app.use('/api/users', usersRoute);
 app.use('*',express.static("./client/build"));
 
 app.listen(port, () => {
-  return console.log(`Server is listening at http://localhost:${port}`);
+  return console.log(`Server is listening at http://localhost:${port}/callback`);
 });
