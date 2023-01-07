@@ -12,6 +12,7 @@ export interface CodeProps {
 
 const spotifyApi = new SpotifyWebApi({
   clientId: "245995995f1c4a328408b62ec83e8ab7",
+//   clieniId: "d1675b274b724855b510dcbdeded2cdf",
 })
 
 
@@ -32,11 +33,12 @@ const Dashboard: React.FC<CodeProps> = ({code}) => {
     spotifyApi.searchTracks(seach).then(res => {
 
       try {
-        // @ts-ignore
+       // @ts-ignore
+       
       res.body.tracks.items.map(track =>{
         const smallestAlbumImage = track.album.images.reduce(
            (smallest, image) =>{
-            // @ts-ignore
+           // @ts-ignore
           if (image.height < smallest.height) return image
           return smallest
         }, track.album.images[0])
