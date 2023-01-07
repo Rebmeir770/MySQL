@@ -3,6 +3,7 @@ import Auth from '../authentication/Auth';
 import '../styles/dashboard.scss';
 import SpotifyWebApi from "spotify-web-api-node";
 import { resourceLimits } from 'worker_threads';
+import { number } from 'joi';
 
 
 export interface CodeProps {
@@ -33,26 +34,23 @@ const Dashboard: React.FC<CodeProps> = ({code}) => {
     spotifyApi.searchTracks(seach).then(res => {
 
       try {
-       // @ts-ignore
-       
-      res.body.tracks.items.map(track =>{
-        const smallestAlbumImage = track.album.images.reduce(
-           (smallest, image) =>{
-           // @ts-ignore
-          if (image.height < smallest.height) return image
-          return smallest
-        }, track.album.images[0])
-        return{
-          artist: track.artists[0].name,
-          title: track.name,
-          uri: track.uri,
-          // @ts-ignore
-          albumUrl: smallestAlbumImage.uri
-        }
-      })
+        res.body.tracks?.items.map(track => {
+          const smallestAlbumImage = track.album.images.reduce((smallest:any, image:any) => {
+            if (image.height < smallest.height) 
+            return smallest;
+          }, track.album.images [0])
+          return {
+            artist: track.album.artists[0].name,
+            title: track.album.name,
+            uri: track.album.uri,
+            albumUrl: smallestAlbumImage.url
+          }
+        })
       } catch (error) {
-        console.error(error);
+        console.log(error);
       }
+
+      
       
     })
   },[seach, accessToken])
