@@ -32,9 +32,10 @@ const Dashboard: React.FC<CodeProps> = ({code}) => {
     if(!accessToken) return
     
     spotifyApi.searchTracks(seach).then(res => {
-
+        
       try {
         res.body.tracks?.items.map(track => {
+          console.log(res.body.tracks?.items)
           const smallestAlbumImage = track.album.images.reduce((smallest:any, image:any) => {
             if (image.height < smallest.height) 
             return smallest;
