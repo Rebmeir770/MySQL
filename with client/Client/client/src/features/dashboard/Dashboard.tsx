@@ -19,6 +19,7 @@ const spotifyApi = new SpotifyWebApi({
 
 
 const Dashboard: React.FC<CodeProps> = ({code}) => {
+  
   const accessToken = (code)
   const [seach, setsearch] = useState<string>("")
   const [searchResults, setSearchResults] = useState<any>([])
