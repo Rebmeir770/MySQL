@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 
-const Auth = (code:any) => {
+export const Auth = (code:any) => {
      const [accessToken, setAccessToken] = useState()
      const [refreshToken, setRefreshToken] = useState()
      const [expiresIn, setExpiresIn] = useState()
@@ -29,14 +29,14 @@ const Auth = (code:any) => {
 
      useEffect(() => {
           if (!refreshToken || !expiresIn) return
-          const timeout = setTimeout (() => {
+          const interval = setInterval (() => {
             
                axios.post('http://localhost:3000/refresh', {
                     refreshToken,
                  })
                  .then(res => {
                     setAccessToken(res.data.accessToken)
-                    setRefreshToken(res.data.refreshToken)  
+                    setRefreshToken(res.data.expiresIn)  
                   })
                    .catch(() => {
                   // .catch((e) => {
@@ -44,10 +44,10 @@ const Auth = (code:any) => {
                     window.location.href = "/"
                })
           },(expiresIn - 60)* 1000)
-       return () => clearTimeout(timeout)
+       return () => clearInterval(interval)
      },[refreshToken, expiresIn])
      
-     return accessToken 
+   return accessToken 
 }
 
 export default Auth
