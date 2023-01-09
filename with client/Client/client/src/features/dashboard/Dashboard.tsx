@@ -11,15 +11,15 @@ export interface CodeProps {
 }
 
 const spotifyApi = new SpotifyWebApi({
-  // clientId: "245995995f1c4a328408b62ec83e8ab7",
+  clientId: "245995995f1c4a328408b62ec83e8ab7",
 
-	  clientId: "d1675b274b724855b510dcbdeded2cdf",
+	  // clientId: "d1675b274b724855b510dcbdeded2cdf",
 
 })
 
 
 const Dashboard: React.FC<CodeProps> = ({code}) => {
-  const accessToken = Auth(code)
+  const accessToken = (code)
   const [seach, setsearch] = useState<string>("")
   const [searchResults, setSearchResults] = useState<any>([])
   // console.log(searchResults);
