@@ -12,18 +12,19 @@ app.use(bodyParser.json());
 
 app.post('/refresh', (req,res) => {
   const refreshToken = req.body.refreshToken
+  // console.log(refreshToken);
   const spotifyApi = new SpotifyWebApi({
     // redirectUri : 'http://localhost:3000',
     // clientId: 'd1675b274b724855b510dcbdeded2cdf',
     // clientSecret: '782f842ef18f486da22a4b0832cf02f1'
 
-    redirectUri : 'https://localhost:3000',
-    clientId: ' 245995995f1c4a328408b62ec83e8ab7',
-    clientSecret: '392ab88333794a2ab6cfce7009342366'
-    // redirectUri: process.env.REDIRECT_URI,
-    // clientId: process.env.CLIENT_ID,
-    // clientSecret: process.env.CLIENT_SECRET,
-    // refreshToken,
+    // redirectUri : 'https://localhost:3000',
+    // clientId: ' 245995995f1c4a328408b62ec83e8ab7',
+    // clientSecret: '392ab88333794a2ab6cfce7009342366'
+    redirectUri: process.env.REDIRECT_URI,
+    clientId: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
+    refreshToken,
   })
 
   spotifyApi.refreshAccessToken().then((data) => {
@@ -44,12 +45,12 @@ app.post('/ready', (req, res) => {
     // clientId: 'd1675b274b724855b510dcbdeded2cdf',
     // clientSecret: '782f842ef18f486da22a4b0832cf02f1'
 
-    redirectUri : 'https://localhost:3000',
-    clientId: ' 245995995f1c4a328408b62ec83e8ab7',
-    clientSecret: '392ab88333794a2ab6cfce7009342366'
-    // redirectUri: process.env.REDIRECT_URI,
-    // clientId: process.env.CLIENT_ID,
-    // clientSecret: process.env.CLIENT_SECRET,
+    // redirectUri : 'https://localhost:3000',
+    // clientId: ' 245995995f1c4a328408b62ec83e8ab7',
+    // clientSecret: '392ab88333794a2ab6cfce7009342366'
+    redirectUri: process.env.REDIRECT_URI,
+    clientId: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
   })
 
   spotifyApi.authorizationCodeGrant(code).then(data =>{

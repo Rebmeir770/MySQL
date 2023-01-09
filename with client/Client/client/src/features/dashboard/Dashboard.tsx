@@ -2,8 +2,7 @@ import React, { useEffect,useState   } from 'react';
 import Auth from '../authentication/Auth';
 import '../styles/dashboard.scss';
 import SpotifyWebApi from "spotify-web-api-node";
-import { resourceLimits } from 'worker_threads';
-import { number } from 'joi';
+
 
 
 export interface CodeProps {
@@ -12,8 +11,10 @@ export interface CodeProps {
 }
 
 const spotifyApi = new SpotifyWebApi({
-  clientId: "245995995f1c4a328408b62ec83e8ab7",
-//   clieniId: "d1675b274b724855b510dcbdeded2cdf",
+  // clientId: "245995995f1c4a328408b62ec83e8ab7",
+
+	  clientId: "d1675b274b724855b510dcbdeded2cdf",
+
 })
 
 
@@ -21,38 +22,37 @@ const Dashboard: React.FC<CodeProps> = ({code}) => {
   const accessToken = (code)
   const [seach, setsearch] = useState<string>("")
   const [searchResults, setSearchResults] = useState<any>([])
+  // console.log(searchResults);
   
   useEffect(() =>{
-    if (!accessToken)return 
+    if(!accessToken) return 
     spotifyApi.setAccessToken(accessToken);
+    
   },[accessToken])
 
-  useEffect(() =>{
+  useEffect(() => {
     if (!seach) return setSearchResults([]);
     if(!accessToken) return
     
     spotifyApi.searchTracks(seach).then(res => {
-        
+        console.log(res.body.tracks?.items);
       try {
-        res.body.tracks?.items.map(track => {
-          console.log(res.body.tracks?.items)
+        setSearchResults(res.body.tracks?.items.map(track => {
+          
           const smallestAlbumImage = track.album.images.reduce((smallest:any, image:any) => {
-            if (image.height < smallest.height) 
+            if (image.height < smallest.height) return image;
             return smallest;
           }, track.album.images [0])
           return {
-            artist: track.album.artists[0].name,
+            artist: track.album.artists[0],
             title: track.album.name,
             uri: track.album.uri,
             albumUrl: smallestAlbumImage.url
           }
-        })
+        }))
       } catch (error) {
         console.log(error);
-      }
-
-      
-      
+      } 
     })
   },[seach, accessToken])
 
