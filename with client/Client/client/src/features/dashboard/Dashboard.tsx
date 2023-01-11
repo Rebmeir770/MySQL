@@ -1,7 +1,9 @@
 import React, { useEffect,useState   } from 'react';
 import Auth from '../authentication/Auth';
+import { AUTH_URL } from '../ready/Ready';
 import '../styles/dashboard.scss';
 import SpotifyWebApi from "spotify-web-api-node";
+import accessToken from "../authentication/Auth"
 
 
 
@@ -9,6 +11,8 @@ export interface CodeProps {
   code: string|null
   
 }
+
+
 
 const spotifyApi = new SpotifyWebApi({
   clientId: "245995995f1c4a328408b62ec83e8ab7",
@@ -19,7 +23,9 @@ const spotifyApi = new SpotifyWebApi({
 
 
 const Dashboard: React.FC<CodeProps> = ({code}) => {
-  
+//get the token from redux via selector  
+//const token = useAppSelector(nameofselector)
+
   const accessToken = (code)
   const [seach, setsearch] = useState<string>("")
   const [searchResults, setSearchResults] = useState<any>([])
@@ -39,7 +45,7 @@ const Dashboard: React.FC<CodeProps> = ({code}) => {
        
       try {
         setSearchResults(res.body.tracks?.items.map(track => {
-          console.log(res.body.tracks?.items);
+          // console.log(res.body.tracks?.items);
           const smallestAlbumImage = track.album.images.reduce((smallest:any, image:any) => {
             if (image.height < smallest.height) return image;
             return smallest;
@@ -85,7 +91,26 @@ const Dashboard: React.FC<CodeProps> = ({code}) => {
   )
 }
 
+// function tokenKey() {
+//   const [users, setUsers] = useState([])
+//   console.log(users)
+//   useEffect(() => {
+//       (async () => {
+//         try {
+//           const response = await fetch("AUTH_URL")
+//           const resulte = await response.json();
+//           setUsers(resulte);
+//         } catch (error) {
+//           console.log(error);
+//         }
+//       })()
+//   },[])
+// }
+
 export default Dashboard
+
+
+
 
 
 
