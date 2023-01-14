@@ -35,7 +35,9 @@ export const Auth = (code:any) => {
           window.location.pathname === "/"
        })
 
-       dispatch(tokenAsync({}))
+       dispatch(tokenAsync({
+          token: ''
+       }))
      }, [code])
 
      useEffect(() => {
