@@ -12,12 +12,12 @@ export enum Status{
 export interface KeyState {
     key: {
         token: string;
-    } | null;
+    } | "245995995f1c4a328408b62ec83e8ab7" | null ;
     status: Status;
 }
 
 const initialState: KeyState = {
-    key: null,
+    key:"245995995f1c4a328408b62ec83e8ab7" ,
     status: Status.IDLE,
 };
 
@@ -27,13 +27,15 @@ export const authSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
       builder
-        .addCase(tokenAsync.pending, (state) => {
+        .addCase(tokenAsync.pending, (state, action:PayloadAction<any>) => {
           state.status = Status.LOADING;
+          const {token} = action.payload;
+          state.key = token;
         })
         .addCase(tokenAsync.fulfilled, (state, action:PayloadAction<any>) => {
           state.status = Status.IDLE;
-          const {user} = action.payload;
-          state.key = user.token;
+          const {token} = action.payload;
+          state.key = token;
         })
         .addCase(tokenAsync.rejected, (state) => {
           state.status = Status.FAILED;

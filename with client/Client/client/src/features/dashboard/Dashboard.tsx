@@ -3,8 +3,11 @@ import Auth from '../authentication/Auth';
 import { AUTH_URL } from '../ready/Ready';
 import '../styles/dashboard.scss';
 import SpotifyWebApi from "spotify-web-api-node";
-import accessToken from "../authentication/Auth"
-
+import accessToken from "../authentication/Auth";
+import { useAppSelector, useAppDispatch } from '../../app/hooks';
+import { selectToken } from '../authentication/authSlice';
+import { tokenAsync } from '../authentication/authApi';
+import { stringify } from 'querystring';
 
 
 export interface CodeProps {
@@ -16,7 +19,8 @@ export interface CodeProps {
 
 const spotifyApi = new SpotifyWebApi({
   clientId: "245995995f1c4a328408b62ec83e8ab7",
-
+    
+     
 	  // clientId: "d1675b274b724855b510dcbdeded2cdf",
 
 })
@@ -26,26 +30,28 @@ const Dashboard: React.FC<CodeProps> = ({code}) => {
 //get the token from redux via selector  
 //const token = useAppSelector(nameofselector)
 
-  const accessToken = (code)
+const token:any = useAppSelector(selectToken)
+console.log(token)
+  const accessToken:any = (code)
   const [seach, setsearch] = useState<string>("")
   const [searchResults, setSearchResults] = useState<any>([])
-  // console.log(searchResults);
+  console.log(searchResults);
   
   useEffect(() =>{
-    if(!accessToken) return 
-    spotifyApi.setAccessToken(accessToken);
+    if(!accessToken) return spotifyApi.setAccessToken(accessToken);
     
   },[accessToken])
 
   useEffect(() => {
     if (!seach) return setSearchResults([]);
+    console.log(!seach)
     if(!accessToken) return
-    
+  console.log(!accessToken)
     spotifyApi.searchTracks(seach).then(res => {
-       
+     
       try {
         setSearchResults(res.body.tracks?.items.map(track => {
-          // console.log(res.body.tracks?.items);
+          console.log(res.body.tracks?.items);
           const smallestAlbumImage = track.album.images.reduce((smallest:any, image:any) => {
             if (image.height < smallest.height) return image;
             return smallest;
@@ -60,7 +66,9 @@ const Dashboard: React.FC<CodeProps> = ({code}) => {
       } catch (error) {
         console.log(error);
       } 
+      
     })
+    
   },[seach, accessToken])
 
   function handleSearch(ev:any) {

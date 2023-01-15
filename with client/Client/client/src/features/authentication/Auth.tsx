@@ -20,6 +20,7 @@ export const Auth = (code:any) => {
       const token = useAppSelector(selectToken)
       console.log(token);
       //the value from server will insert to action.payload
+      
       axios.post('http://localhost:3000/ready', {
          code,
       })
