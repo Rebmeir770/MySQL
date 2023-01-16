@@ -4,7 +4,7 @@ import { AUTH_URL } from '../ready/Ready';
 import '../styles/dashboard.scss';
 import SpotifyWebApi from "spotify-web-api-node";
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
-import { selectToken } from '../authentication/authSlice';
+import { getToken, selectToken } from '../authentication/authSlice';
 import { tokenAsync } from '../authentication/authApi';
 
 export interface CodeProps {
@@ -13,8 +13,8 @@ export interface CodeProps {
 }
 
 const spotifyApi = new SpotifyWebApi({
-  clientId: "245995995f1c4a328408b62ec83e8ab7",
-    
+  // clientId: "245995995f1c4a328408b62ec83e8ab7",
+   clientId: "19cd85358d9944ea862bb837eb08562a"
      
 	  // clientId: "d1675b274b724855b510dcbdeded2cdf",
 
@@ -22,13 +22,10 @@ const spotifyApi = new SpotifyWebApi({
 
 
 const Dashboard: React.FC<CodeProps> = ({code}) => {
-//get the token from redux via selector  
-//const token = useAppSelector(nameofselector)
-const dispatch = useAppDispatch();
-const token:any = useAppSelector(selectToken)
-
-console.log(token)
-
+  //get the token from redux via selector  
+  const dispatch = useAppDispatch();
+  const token:any = useAppSelector(selectToken)
+  console.log(token)
 
   const accessToken:any = (code)
   const [seach, setsearch] = useState<string>("")
@@ -36,8 +33,13 @@ console.log(token)
   console.log(searchResults);
   
   useEffect(() =>{
-    if(!accessToken) return spotifyApi.setAccessToken(accessToken);
     
+    try {
+      if(!accessToken) return spotifyApi.setAccessToken(accessToken);
+      dispatch(getToken(token))
+    } catch (error) {
+      console.error(error)
+    }
   },[accessToken])
 
   useEffect(() => {
