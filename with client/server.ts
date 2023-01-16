@@ -78,6 +78,9 @@ connection.connect((err) => {
 import usersRoute from './API/users/usersRoute'
 app.use('/api/users', usersRoute);
 
+import tokenRoute from './API/users/torken/tokenRoute'
+app.use('api/token', tokenRoute)
+
 
 app.use('*',express.static("./client/build"));
 
