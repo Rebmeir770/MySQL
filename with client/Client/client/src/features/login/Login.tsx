@@ -3,7 +3,7 @@ import '../styles/login.scss'
 import { Link } from 'react-router-dom'
 import { loginAsync } from '../User/userApi';
 import { useAppDispatch } from '../../app/hooks';
-import JewishDate from '../jewishDate/JewishDate';
+
 
 
 

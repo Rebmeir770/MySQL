@@ -1,7 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom"
-
-import Ready from "../ready/Ready";
+import React from "react";
 import '../styles/home.scss'
 
 function Home() {
