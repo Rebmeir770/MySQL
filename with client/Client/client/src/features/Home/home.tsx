@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom"
 
 import Ready from "../ready/Ready";
 import '../styles/home.scss'
@@ -8,7 +9,13 @@ function Home() {
 
   return (
     <div>
-    
+    return (
+    <div className='container'>
+         <a> 
+           <img src="https://dcassetcdn.com/design_img/1520978/501634/501634_7707192_1520978_568d7453_image.png" alt="logo" />
+       </a>
+     </div>
+   )
     </div>
   )
 }
