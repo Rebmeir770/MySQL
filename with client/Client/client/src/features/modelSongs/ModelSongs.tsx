@@ -1,7 +1,7 @@
 import path from 'path';
 import React from 'react'
 import {useState, useEffect} from 'react';
-
+import Player from '../player/Player';
 
 
 const ModelSongs = () => {
@@ -58,7 +58,7 @@ const ModelSongs = () => {
     ]);
 
     const [currentSongIndex, setCurrentSongIndex] = useState(0);
-    const [nextSongIndex, setNextSongIndex] = useState(0);
+    const [nextSongIndex, setNextSongIndex] = useState(currentSongIndex + 1);
   
     useEffect(() => {
       setNextSongIndex(() => {
@@ -73,12 +73,10 @@ const ModelSongs = () => {
 
   return (
     <div>
-{/* <Player 
-        currentSongIndex={currentSongIndex} 
-        setCurrentSongIndex={setCurrentSongIndex} 
-        nextSongIndex={nextSongIndex} 
-        songs={songs}
-      /> */}
+<Player 
+        song={songs[currentSongIndex]}
+        netxtSong={songs[nextSongIndex]}
+      />
     </div>
   )
 }
