@@ -30,3 +30,10 @@ export const loginAsync = createAsyncThunk(
         return data;
     }
 );
+
+export const logoutAsync = createAsyncThunk(
+    'user/login',
+    async () => {
+        return null;
+    }
+);

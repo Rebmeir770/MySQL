@@ -7,7 +7,8 @@ $lightGreen : #b9e7e7;
             justify-content: center;
             height: 100vh;
             background-color: $lightGreen;
-
+            padding: 20px 30px;
+           
             h1{
                 font-size: 20px;
                 color: teal;
@@ -21,6 +22,9 @@ $lightGreen : #b9e7e7;
                 background-color: white;
                 width: 200px;
                 gap: 20px;
+                border-radius: 10px;
+                border: 2px solid whitesmoke;
+                
 
                 input{
                     padding: 10px;
@@ -34,6 +38,11 @@ $lightGreen : #b9e7e7;
                     background-color: teal;
                     cursor: pointer;
                     color: white;
+                }
+
+                span {
+                    font-size: 12px;
+                    text-align: center;
                 }
             }
 } 

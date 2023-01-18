@@ -1,20 +1,28 @@
 import React from "react";
-import '../styles/home.scss'
+import '../styles/home.scss';
+import ModelSongs from "../modelSongs/ModelSongs";
+import { useAppDispatch } from "../../app/hooks";
+import { useNavigate } from "react-router-dom";
+import { logoutAsync } from "../User/userApi";
 
 function Home() {
-  
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const logout = () => {
+    dispatch(logoutAsync())
+    navigate('/login');
+  }
 
   return (
-    <div>
-    return (
-    <div className='container'>
-         <a> 
-           <img src="https://dcassetcdn.com/design_img/1520978/501634/501634_7707192_1520978_568d7453_image.png" alt="logo" />
-       </a>
+    <>
+      <ModelSongs/>
+      <div className=" conteiner1">
+        <button onClick={logout}>Logout</button> 
      </div>
-   )
-    </div>
+    </>
   )
 }
 
 export default Home;
+

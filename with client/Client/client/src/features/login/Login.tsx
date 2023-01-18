@@ -1,15 +1,16 @@
 import React from 'react'
 import '../styles/login.scss'
-import { Link } from 'react-router-dom'
+import { useNavigate, Link } from "react-router-dom";
 import { loginAsync } from '../User/userApi';
-import { useAppDispatch } from '../../app/hooks';
-
-
-
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { selectUser } from '../User/loginSlice';
 
 const Login = () => {
   
   const dispatch = useAppDispatch();
+  
+  const navigate = useNavigate();
+
 
   function handleLogin(ev:any) {
     ev.preventDefault();
@@ -21,26 +22,22 @@ const Login = () => {
     console.log(username, password)
 
     dispatch(loginAsync({username, password}))
-
-
+    navigate('/home');
   }
 
 
   return (
-     
      <div className='auth'>
-        
         <h1>Login</h1>
         <form onSubmit={handleLogin} >
           <input required type="text" placeholder='username' name="username"  />
           <input required type="password" placeholder='password'  name="password" />
-          <button>Longin</button>
-        </form>
-        <span>
+          <button>Login</button>
+          <span>
           Don't you have an account? <Link to="/register">Register</Link>
-        </span>
+          </span>
+        </form>
       </div>
-    
   )
 }
 
