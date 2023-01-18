@@ -6,15 +6,16 @@ import Login from './features/login/Login';
 import Main from './features/Main/main';
 import Home from "./features/home/Home";
 import JewishDate from "./features/jewishDate/JewishDate";
-import { useAppSelector } from "./app/hooks";
-import { selectUser } from "./features/User/userSlice";
+
+
 
 const App = () => {
 
   
   return(<>
-    <JewishDate/>
+    
     <BrowserRouter>
+    <JewishDate/>
         <Routes>
            <Route path="/" element={<Main />}>
                <Route path="home" index element={<Home />} />
