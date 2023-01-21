@@ -44,7 +44,7 @@ export const logoutSlice = createSlice({
    },
 });
 
-export const selectUser = (state: RootState) => state.user.user;
-export const selectUserStatus = (state: RootState) => state.user.status;
+export const selectUser = (state: RootState) => state.logout.user;
+export const selectUserStatus = (state: RootState) => state.logout.user;
 
 export default logoutSlice.reducer;

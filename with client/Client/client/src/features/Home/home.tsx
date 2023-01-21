@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { logoutAsync } from "../User/userApi";
 import { selectUser } from "../User/logoutSlice";
 
+
 function Home() {
   const dispatch = useAppDispatch();
   const user = useAppSelector(selectUser);
@@ -20,7 +21,7 @@ function Home() {
     <>
       <ModelSongs/>
       <div className=" conteiner1">
-        <button onClick={logout}>Logout</button> 
+        <button onClick={logout} className="logout">Logout</button> 
      </div>
     </>
   )
