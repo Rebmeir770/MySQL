@@ -1,12 +1,15 @@
 import React from 'react';
 import './NavBar.scss';
+import { Link } from 'react-router-dom';
 
 const NavBar = () => {
   return (
     <div className='navbar'>
         <div className="container">
             <div className="logo">
+              <Link to="/">
                 <span className='text'>Fiverr</span>
+              </Link>  
                 <span className='dot'>.</span>
             </div>
             <div className="links">
@@ -19,6 +22,11 @@ const NavBar = () => {
             </div>
             
         </div>
+        <hr/>
+            <div className="menu">
+              <span>Test</span>
+              <span>Test2</span>
+            </div>
     </div>
   )
 }
