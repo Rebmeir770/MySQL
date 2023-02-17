@@ -19,7 +19,7 @@ const NavBar = () => {
   },[])
 
   return (
-    <div className={active ? "navabar active" : 'navbar'}>
+    <div className={active ? "navabar active" : "navbar"}>
         <div className="container">
             <div className="logo">
               {/* <Link to="/"> */}
@@ -37,7 +37,7 @@ const NavBar = () => {
             </div>
             
         </div>
-         {active && ( 
+         {(active) && ( 
             <>
               <hr />
               <div className="menu">
