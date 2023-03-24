@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import './NavBar.scss';
 import { Link } from 'react-router-dom';
 
-const [active, setActive] = useState<boolean>(false);
+
 
 const NavBar = () => {
   
+  const [active, setActive] = useState(false);
+
   const isActive = () =>{
     window.scrollY > 0 ? setActive(true) : setActive(false)
   }
@@ -20,7 +22,7 @@ const NavBar = () => {
 
   return (
     <div className={active ? "navbar active" : "navbar"}>
-    {/* <div className= 'navbar'> */}
+    
         <div className="container">
             <div className="logo">
               <Link to="/">
@@ -38,23 +40,17 @@ const NavBar = () => {
             </div>
             
         </div>
-         {(active) && ( 
-            <>
+         { active && (       
+         <>
               <hr />
               <div className="menu">
-                <span>mierda</span>
-                <span>mierda</span>
+                <span>Meir</span>
+                <span>Meiital</span>
               </div>
            </>
          )}
 
-           {/* <>
-              <hr />
-              <div className="menu">
-                <span>Test</span>
-                <span>Test2</span>
-              </div>
-           </> */}
+          
     </div>
   );
 };
