@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './NavBar.scss';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 
 
@@ -16,18 +16,24 @@ const NavBar = () => {
     window.addEventListener("scroll", isActive);
     
     return () => {
-      window.removeEventListener("scroll", isActive);
+      window.removeEventListener("scroll", isActive)
     } 
   },[])
+
+  const currentUser = {
+    id:1,
+    username:"Meir Duvid Krykun",
+    isSeller: true
+  }
 
   return (
     <div className={active ? "navbar active" : "navbar"}>
     
         <div className="container">
             <div className="logo">
-              <Link to="/">
+              {/* <Link to="/"> */}
                 <span className='text'>Fiverr</span>
-             </Link>  
+             {/* </Link>   */}
                 <span className='dot'>.</span>
             </div>
             <div className="links">
@@ -41,11 +47,11 @@ const NavBar = () => {
             
         </div>
          { active && (       
-         <>
+           <>
               <hr />
               <div className="menu">
-                <span>Meir</span>
-                <span>Meiital</span>
+                <span>test 1</span>
+                <span>test 2</span>
               </div>
            </>
          )}
