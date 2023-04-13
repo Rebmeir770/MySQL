@@ -6,7 +6,7 @@ import './NavBar.scss';
 
 const NavBar = () => {
   
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState<boolean>(false);
 
   const isActive = () =>{
     window.scrollY > 0 ? setActive(true) : setActive(false)
@@ -41,8 +41,25 @@ const NavBar = () => {
                 <span>Explore</span>
                 <span>English</span>
                 <span>Sing in</span>
-                <span>Become a Seller</span>
-                <button>Join</button>
+                {!currentUser?.isSeller && <span>Become a Seller</span>}
+                {!currentUser && <button>Join</button>}
+                {currentUser && (
+                  <div className="user">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThjpSZ3SXaq0Jfv-sKqB8gck9MvTI12x5zcg&usqp=CAU" alt="" />
+                    <span>{currentUser?.username}</span>
+                    <div className="options">
+                      {currentUser?.isSeller &&(
+                        <>
+                            <span>Gigs</span>
+                            <span>Add New Gig</span>
+                        </>
+                      )}
+                      <span>Orders</span>
+                      <span>Messages</span>
+                      <span>Logout</span>
+                    </div>
+                  </div>
+                )}
             </div>
             
         </div>

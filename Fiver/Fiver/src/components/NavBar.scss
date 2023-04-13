@@ -37,6 +37,18 @@
             gap: 24px;
             font-weight: 500;
             font-family: "Monserrat", sans-serif;
+            .user{
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              cursor: pointer;
+              img{
+                width: 32px;
+                height: 32px;
+                border-radius: 50%;
+                object-fit: cover;
+              }
+            }
           button{
             color:aqua;
             padding: 10px 20px;
