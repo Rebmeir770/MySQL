@@ -14,7 +14,7 @@ const FibonacciSequence: React.FC = () => {
         setSequence(fib.slice(1));
     }; 
   return (
-    <div>
+    <div className='form'>
         <input type="number" value={number} onChange={(e) => setNunber(parseInt(e.target.value))} />
         <button onClick={generateSequence}>Generate Fibonacci Sequence</button>
         <ul>
